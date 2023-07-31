@@ -1,0 +1,46 @@
+<style>
+  .header {
+    background: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.2);
+
+    & span {
+      padding-left: 20px;
+      font-size: 20px;
+
+      &.logo {
+        text-align: center;
+        font-size: 50px;
+        font-weight: bolder;
+        padding-right: 40px;
+      }
+    }
+  }
+</style>
+
+<div class="header">
+  <span class="logo">
+    <a href="/"> <i class="fa-solid fa-star" style="color: red"></i> ARMY </a>
+  </span>
+
+  <div class="menu-responsive">
+    <div class="boton">
+      <i class="fa-solid fa-person-rifle"></i> Productos
+    </div>
+
+    <div class="boton">
+      <i class="fa-solid fa-cart-shopping"></i> Carrito
+    </div>
+
+    <div class="boton" onclick="iniciar_sesion()">
+      <i class="fa-regular fa-circle-user"></i> Iniciar sesión
+    </div>
+  </div>
+
+  <div class="boton">
+    <i class="fa-brands fa-whatsapp"></i> &nbsp; +57 300 000 0000
+  </div>
+</div>
