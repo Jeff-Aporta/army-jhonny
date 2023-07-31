@@ -7,6 +7,12 @@
     <%- include(info_pagina.subir_a_raiz + '_frags/header') %>
 
     <div style="text-align: center;" class="contenedor-principal">
+
+        <form action="/upload-imgs" method="post" enctype="multipart/form-data">
+            <input type="file" name="photos" multiple/>
+            <button type="submit">Upload</button>
+        </form>
+
     </div>
 
     <%- include(info_pagina.subir_a_raiz + '_frags/footer') %>

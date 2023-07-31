@@ -10,12 +10,17 @@ a{
 
 body{
     background-image: url(/svg/army.svg);
+    background-color: burlywood;
     background-size: cover;
     font-family: "Roboto";
 }
 
 .menu-responsive{
     display: flex;
+}
+
+.contenedor-principal{
+    min-height: 100vh;
 }
 
 .boton-header{
@@ -27,7 +32,29 @@ body{
     white-space: nowrap;
 }
 
-.boton:hover{
+.boton-header:hover{
     opacity: 0.5;
     cursor: pointer;
+}
+
+.dodgerblue{
+    background-color: dodgerblue;
+    color: white;
+}
+
+.tomato{
+    background-color: tomato;
+    color: white;
+}
+
+.btn{
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.btn:hover{
+    filter: brightness(1.3);
 }

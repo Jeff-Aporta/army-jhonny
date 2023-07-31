@@ -78,5 +78,6 @@ server.listen(app.get("port"), () => {
   console.log("corriendo en el puerto:", app.get("port"));
 });
 
+require("./app/imgbb")(pack_app);
 require("./app/socket.io")(pack_app);
 require("./app/rutas")(pack_app);

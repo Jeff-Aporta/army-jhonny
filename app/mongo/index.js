@@ -21,6 +21,7 @@ const client = new MongoClient(MONGO_URI);
 
 let collections = {
     "Usuarios": undefined,
+    "Productos": undefined,
     "Principal": undefined
 }
 
@@ -39,6 +40,7 @@ client.connect(async err => {
             collections[name_collection] = database.collection(name_collection);
         }
         console.log("Todo correcto en MONGO")
+
     }
 });
 

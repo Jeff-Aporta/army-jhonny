@@ -1,46 +1,86 @@
-<style>
-  .header {
-    background: white;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.2);
-
-    & span {
-      padding-left: 20px;
-      font-size: 20px;
-
-      &.logo {
-        text-align: center;
-        font-size: 50px;
-        font-weight: bolder;
-        padding-right: 40px;
-      }
-    }
-  }
-</style>
+<link rel="stylesheet" href="/css/_frags/header.css" />
 
 <div class="header">
-  <span class="logo">
+  <span class="
+    logo
+    display_none-less-950px
+  ">
     <a href="/"> <i class="fa-solid fa-star" style="color: red"></i> ARMY </a>
   </span>
 
-  <div class="menu-responsive">
-    <div class="boton">
-      <i class="fa-solid fa-person-rifle"></i> Productos
+  <label class="
+    display_inline-block-less-950px
+    display_none-up-950px
+  " style="
+    font-size: 50px;
+  ">
+    <input type="checkbox" class="menu-bars" id="menu-bars" style="display: none;">
+    <i class="fa-solid fa-bars"></i>
+  </label>
+
+  <label for="menu-bars" class="sombra-menu-bars">
+  </label>
+
+  <div class="
+    menu-responsive
+    position_fixed-less-950px
+    padding_10px-less-950px
+    top_0-less-950px
+    height_100vh-less-950px
+    background_white-less-950px
+    flex-direction_column-less-950px
+  ">
+
+    <label for="menu-bars" style="font-size: 150%;color: tomato;text-align: right;" class="
+      display_none-up-950px
+    ">
+      &times;
+    </label>
+
+    <br>
+
+    <div class="
+      display_none-up-950px
+    " style="
+      font-size: 150%;
+      text-align: center;
+      border-top: 1px solid lightgray;
+      border-bottom: 1px solid lightgray;
+      padding: 10px;
+    ">
+      <a href="/"> <i class="fa-solid fa-star" style="color: red"></i> ARMY </a>
     </div>
 
-    <div class="boton">
-      <i class="fa-solid fa-cart-shopping"></i> Carrito
+    <br>
+
+    <div class="boton-header">
+      <a href="/productos-nuevo">
+        <i class="fa-solid fa-person-rifle"></i> &nbsp; Productos
+      </a>
     </div>
 
-    <div class="boton" onclick="iniciar_sesion()">
-      <i class="fa-regular fa-circle-user"></i> Iniciar sesión
+    <div class="boton-header">
+      <i class="fa-solid fa-cart-shopping"></i> &nbsp; Carrito
+    </div>
+
+    <div class="
+      boton-header
+      padding-top_30px-less-950px
+    " onclick="iniciar_sesion()">
+      <i class="fa-regular fa-circle-user"></i> &nbsp; Iniciar sesión
     </div>
   </div>
 
-  <div class="boton">
+  <div class="
+    boton-header
+    display_none-less-950px
+  ">
     <i class="fa-brands fa-whatsapp"></i> &nbsp; +57 300 000 0000
   </div>
 </div>
+
+<script>
+  window.addEventListener("resize", () => {
+    document.querySelector(".menu-bars").checked = false;
+  });
+</script>
