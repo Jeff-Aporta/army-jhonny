@@ -13,6 +13,7 @@
     display_none-up-950px
   " style="
     font-size: 50px;
+    cursor: pointer;
   ">
     <input type="checkbox" class="menu-bars" id="menu-bars" style="display: none;">
     <i class="fa-solid fa-bars"></i>
@@ -24,7 +25,7 @@
   <div class="
     menu-responsive
     position_fixed-less-950px
-    padding_10px-less-950px
+    padding_10px_60px-less-950px
     top_0-less-950px
     height_100vh-less-950px
     background_white-less-950px
@@ -71,16 +72,24 @@
     </div>
   </div>
 
-  <div class="
+  <div 
+  style="color: limegreen;"
+  class="
     boton-header
     display_none-less-950px
   ">
-    <i class="fa-brands fa-whatsapp"></i> &nbsp; +57 300 000 0000
+    <i class="fa-brands fa-whatsapp"></i> &nbsp; 300 000 0000
   </div>
 </div>
 
 <script>
   window.addEventListener("resize", () => {
     document.querySelector(".menu-bars").checked = false;
+  });
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key == "Escape") {
+      document.querySelector(".menu-bars").checked = false;
+    }
   });
 </script>

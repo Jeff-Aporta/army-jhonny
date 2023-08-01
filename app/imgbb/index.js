@@ -25,7 +25,6 @@ module.exports = (pack_app) => {
   const { app } = pack_app;
   app.post('/upload-imgs', upload.any(), async (req, res, next) => {
     for (let i = 0; i < req.files.length; i++) {
-      continue
       let file = req.files[i];
       let options = {
         name: file.filename,
