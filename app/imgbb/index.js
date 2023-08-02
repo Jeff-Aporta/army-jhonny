@@ -26,12 +26,9 @@ module.exports = (pack_app) => {
   app.post('/upload-imgs', upload.any(), async (req, res, next) => {
     for (let i = 0; i < req.files.length; i++) {
       let file = req.files[i];
-      let options = {
-        name: file.filename,
-        base64string: file.buffer.toString("base64")
-      }
-      let imgbb = await upload_imgbb(options);
-      response.push(imgbb);
+      let { path, fieldname } = file;
+      console.log(file);
+      //let imgbb = await upload_imgbb(options);
     }
     res.redirect('/');
   });

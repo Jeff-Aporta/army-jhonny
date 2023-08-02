@@ -40,7 +40,6 @@ client.connect(async err => {
             collections[name_collection] = database.collection(name_collection);
         }
         console.log("Todo correcto en MONGO")
-
     }
 });
 
