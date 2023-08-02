@@ -1,0 +1,16 @@
+.label-agregar-fotos {
+  width: 150px;
+  height: 200px;
+  border: 2px dashed black;
+  color: black;
+  font-size: 300%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.label-agregar-fotos:hover {
+  background-color: rgba(0, 100, 0, 0.1);
+}

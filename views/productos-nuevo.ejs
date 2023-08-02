@@ -2,20 +2,25 @@
 <html lang="es">
 <head>
     <%- include(info_pagina.subir_a_raiz + '_frags/links&metas') %>
+    <link rel="stylesheet" href="/css/productos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.5.1/jscolor.min.js"></script>
 </head>
 <body>
     <%- include(info_pagina.subir_a_raiz + '_frags/header') %>
 
-    <div style="text-align: center;" class="contenedor-principal">
+    <div class="contenedor-principal">
 
         <form action="/upload-imgs" method="post" enctype="multipart/form-data">
             <input type="file" name="A" id="A" data-abc="123" multiple accept="image/*"/>
             <button type="submit">Upload</button>
         </form>
 
-        <label for="A" style="width: 150px;height: 200px;border: 2px dashed white;color: white;font-size: 400%;display: inline-flex;justify-content: center;align-items: center;cursor: pointer;">
-            <i class="fa-solid fa-camera"></i>
-        </label>
+        <div class="contenedor">
+            <input data-jscolor="">
+            <label for="A" class="label-agregar-fotos">
+                <i class="fa-solid fa-camera"></i>
+            </label>
+        </div>
 
     </div>
 
