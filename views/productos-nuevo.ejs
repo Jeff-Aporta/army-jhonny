@@ -16,7 +16,12 @@
         </form>
 
         <div class="contenedor">
-            <input data-jscolor="">
+            <% 
+                let rnd = ()=>Math.floor(Math.random() * 256);
+            %>
+            <div id="label-A" data-jscolor="{value:'rgba(<%- rnd() %>,<%- rnd() %>,<%- rnd() %>,1)', previewSize:10}" style="width: 100px;height: 100px;border-radius: 50%;display: inline-flex;justify-content: center;align-items: center;">
+                Color
+            </div>
             <label for="A" class="label-agregar-fotos">
                 <i class="fa-solid fa-camera"></i>
             </label>
