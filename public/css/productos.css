@@ -9,6 +9,43 @@
   align-items: center;
   cursor: pointer;
   border-radius: 10px;
+  margin: 5px;
+}
+
+.miniatura {
+  width: 150px;
+  height: 200px;
+  border: 2px solid black;
+  color: black;
+  display: inline-block;
+  border-radius: 10px;
+  background-size: cover;
+  position: relative;
+  margin: 5px;
+
+  .mover,
+  .eliminar {
+    padding: 3px;
+    text-shadow: 0 0 3px white, 0 0 3px white, 0 0 3px white,0 0 3px white, 0 0 3px white, 0 0 3px white, 0 0 3px white, 0 0 3px white, 0 0 3px white;
+  }
+
+  .mover {
+    width: 20%;
+    cursor: move;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .eliminar {
+    width: 20%;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: red;
+    font-size: 150%;
+  }
 }
 
 .label-agregar-fotos:hover {

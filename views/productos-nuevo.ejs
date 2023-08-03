@@ -22,6 +22,9 @@
             <div id="label-A" data-jscolor="{value:'rgba(<%- rnd() %>,<%- rnd() %>,<%- rnd() %>,1)', previewSize:10}" style="width: 100px;height: 100px;border-radius: 50%;display: inline-flex;justify-content: center;align-items: center;">
                 Color
             </div>
+            <div class="previsualizaciones">
+                
+            </div>
             <label for="A" class="label-agregar-fotos">
                 <i class="fa-solid fa-camera"></i>
             </label>
@@ -30,5 +33,46 @@
     </div>
 
     <%- include(info_pagina.subir_a_raiz + '_frags/footer') %>
+
+    <script>
+         let A = document.getElementById('A');
+         A.addEventListener('change', (e)=>{
+                let input = e.target;
+
+                let previsualizaciones = document.querySelector('.previsualizaciones');
+                previsualizaciones.innerHTML = '';
+                let archivos = input.files;
+                for(let i = 0; i < archivos.length; i++){
+                    let archivo = archivos[i];
+                    let url = URL.createObjectURL(archivo);
+                    let div = document.createElement('div');
+                    div.style.backgroundImage = `url(${url})`;
+                    div.classList.add('miniatura');
+
+                    let div_mover = document.createElement('div');
+                    div_mover.classList.add('mover');
+                    div_mover.innerHTML = '<i class="fa-solid fa-grip"></i>';
+                    div.appendChild(div_mover);
+
+                    div_eliminar = document.createElement('div');
+                    div_eliminar.classList.add('eliminar');
+                    div_eliminar.innerHTML = '<i class="fa-solid fa-circle-xmark"></i>';
+                    div.appendChild(div_eliminar);
+
+                    div_eliminar.addEventListener('click', (evnt)=>{
+                        const dt = new DataTransfer();
+                        [...archivos].forEach(element => {
+                            if(element != archivo){
+                                dt.items.add(element)
+                            }
+                        });
+                        input.files = dt.files;
+                        div.remove();
+                    });
+
+                    previsualizaciones.appendChild(div);
+                }
+         });
+    </script>
 </body>
 </html>
