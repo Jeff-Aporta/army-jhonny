@@ -28,6 +28,8 @@
 <!-- Iniciar sesión en cualquier página -->
 <script src="/js/iniciar-sesion.js"></script>
 
+<script src="/js/prototypes.js"></script>
+
 <!-- Responsive -->
 <script defer src="/js/ifw-switchw-lerpw/responsive-main.js"></script>
 <script src="/js/ifw-switchw-lerpw/responsive-ifw.js"></script>
@@ -36,5 +38,5 @@
 
 <script>
   let socket = io();
-  let user = <%- JSON.stringify(user) %>;
+  let user = <%- JSON.stringify(user) ?? "undefined" %>;
 </script>

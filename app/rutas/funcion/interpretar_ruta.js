@@ -37,7 +37,7 @@ function interpretar_ruta(req, res, next) {
       };
     }
     
-    return res.render("ERROR", {
+    return res.render("404", {
       ...retornar({
         profundidad: nodos_ruta.length,
         carpeta: nodos_ruta.join("/"),

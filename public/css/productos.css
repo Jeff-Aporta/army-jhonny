@@ -10,6 +10,7 @@
   cursor: pointer;
   border-radius: 10px;
   margin: 5px;
+  vertical-align: top;
 }
 
 .miniatura {
@@ -20,22 +21,9 @@
   display: inline-block;
   border-radius: 10px;
   background-size: cover;
+  background-position: center;
   position: relative;
   margin: 5px;
-
-  .mover,
-  .eliminar {
-    padding: 3px;
-    text-shadow: 0 0 3px white, 0 0 3px white, 0 0 3px white,0 0 3px white, 0 0 3px white, 0 0 3px white, 0 0 3px white, 0 0 3px white, 0 0 3px white;
-  }
-
-  .mover {
-    width: 20%;
-    cursor: move;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
 
   .eliminar {
     width: 20%;
@@ -45,9 +33,88 @@
     right: 0;
     color: red;
     font-size: 150%;
+
+    padding: 3px;
+    text-shadow: 0 0 3px white, 0 0 3px white, 0 0 3px white, 0 0 3px white,
+      0 0 3px white, 0 0 3px white, 0 0 3px white, 0 0 3px white, 0 0 3px white;
+    &:hover {
+      filter: brightness(2);
+    }
   }
 }
 
 .label-agregar-fotos:hover {
   background-color: rgba(0, 100, 0, 0.1);
+}
+
+.plantilla-producto {
+  background: white;
+  display: inline-block;
+  text-align: left;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 5px;
+
+  & img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border: 2px solid lightgray;
+    border-radius: 10px;
+  }
+
+  & .precio {
+    font-size: 150%;
+    font-weight: lighter;
+    margin: 10px 0;
+  }
+}
+
+.presentador-un-producto {
+  & .Titulo {
+    font-size: 400%;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  & .Descripcion {
+    text-align: left;
+  }
+  & .img-principal {
+    width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+  }
+
+  & .thumb {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border: 2px solid lightgray;
+    border-radius: 10px;
+    margin: 3px;
+    cursor: pointer;
+    opacity: 0.5;
+    &.thumb-activo {
+      opacity: 1;
+    }
+  }
+
+  & .presentador-imagenes {
+    position: relative;
+    display: inline-block;
+    width: 60vw;
+    min-width: 300px;
+    border: 2px solid lightgray;
+    border-radius: 10px;
+    padding: 10px;
+    & .Imagenes {
+      position: absolute;
+      top: 0;
+      left: 10px;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      max-height: 90vh;
+    }
+  }
 }

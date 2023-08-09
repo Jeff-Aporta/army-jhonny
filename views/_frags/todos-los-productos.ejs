@@ -1,0 +1,33 @@
+<div class="productos-cargados"></div>
+
+<div class="plantilla-producto" style="display: none">
+  <a>
+    <img />
+  </a>
+  <div class="info">
+    <div class="precio">$123.456</div>
+    <div class="titulo">Titulo de prueba</div>
+  </div>
+</div>
+
+<script>
+  socket.emit("Productos: Cargar todos");
+
+  socket.on("Productos: Cargar todos", (productos) => {
+    let productosCargados = document.querySelector(".productos-cargados");
+    productosCargados.innerHTML = "";
+    console.log(productos);
+    productos.forEach((producto) => {
+      let plantillaProducto = document.querySelector(".plantilla-producto");
+      let productoCargado = plantillaProducto.cloneNode(true);
+      productoCargado.style.display = "inline-block";
+      productoCargado.querySelector("a").href = `/producto?_id=${producto._id}`;
+      productoCargado.querySelector("img").src = producto.imagenes[0].thumb.url;
+      productoCargado.querySelector(
+        ".precio"
+      ).innerHTML = `$${producto.precio}`;
+      productoCargado.querySelector(".titulo").innerHTML = producto.titulo;
+      productosCargados.appendChild(productoCargado);
+    });
+  });
+</script>
