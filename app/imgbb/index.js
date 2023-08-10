@@ -41,12 +41,12 @@ module.exports = (pack_app) => {
       if (e > 1) {
         e = 1;
       }
-      
-      await image.resize(w * e, h * e).writeAsync(file.path);
+
+      await image.resize(w * e, h * e).write(nuevoNombre);
 
 
        let imgbb = await upload_imgbb({
-        imagePath: file.path,
+        imagePath: nuevoNombre,
       }); 
       imagenes.push(imgbb);
       setTimeout(() => {
@@ -56,7 +56,7 @@ module.exports = (pack_app) => {
           }
           console.log("Archivo eliminado");
         });
-      }, 60000);
+      }, 1000);
     }
     req.body.imagenes = imagenes;
     mongo.escribir(req.body, "Productos");

@@ -37,6 +37,7 @@
     padding: 3px;
     text-shadow: 0 0 3px white, 0 0 3px white, 0 0 3px white, 0 0 3px white,
       0 0 3px white, 0 0 3px white, 0 0 3px white, 0 0 3px white, 0 0 3px white;
+
     &:hover {
       filter: brightness(2);
     }
@@ -63,22 +64,48 @@
     border-radius: 10px;
   }
 
-  & .precio {
-    font-size: 150%;
-    font-weight: lighter;
-    margin: 10px 0;
+  & .info{
+    & .titulo{
+      max-width: 200px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    & .precio {
+      font-size: 150%;
+      font-weight: lighter;
+      margin: 10px 0;
+    }
   }
+
 }
 
 .presentador-un-producto {
-  & .Titulo {
-    font-size: 400%;
-    font-weight: bold;
-    margin: 10px 0;
-  }
-  & .Descripcion {
+
+  & .textos {
+    display: inline-block;
+    vertical-align: top;
+    min-width: 300px;
+    max-width: 520px;
     text-align: left;
+    padding: 10px;
+
+    & .Titulo {
+      font-size: 300%;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    & .Precio {
+      font-weight: lighter;
+    }
+
+    & .Descripcion {
+      text-align: left;
+    }
   }
+
   & .img-principal {
     width: 100%;
     max-height: 90vh;
@@ -94,6 +121,7 @@
     margin: 3px;
     cursor: pointer;
     opacity: 0.5;
+
     &.thumb-activo {
       opacity: 1;
     }
@@ -107,6 +135,7 @@
     border: 2px solid lightgray;
     border-radius: 10px;
     padding: 10px;
+
     & .Imagenes {
       position: absolute;
       top: 0;

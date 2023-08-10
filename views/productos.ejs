@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include(info_pagina.subir_a_raiz + '_frags/links&metas') %>
+    <link rel="stylesheet" href="/css/productos.css">
+</head>
+<body>
+    <%- include(info_pagina.subir_a_raiz + '_frags/header') %>
+
+    <div style="text-align: center;" class="contenedor-principal">
+        <div class="btn dodgerblue" onclick="crearProducto();">
+            Crear nuevo producto <i class="fa-solid fa-circle-plus"></i>
+        </div>
+        <hr>
+        <h1 style="color: white;">
+            Productos
+        </h1>
+        <br>
+        <%- include(info_pagina.subir_a_raiz + '_frags/todos-los-productos.ejs', {
+            inicio: -1,
+            fin: -1,
+            ordenamiento: "alfabetico"
+        }) %>
+
+        <div class="producto-nuevo">
+            <%- include(info_pagina.subir_a_raiz + 'producto-nuevo.ejs') %>
+        </div>
+    </div>
+
+    <script>
+        function crearProducto() {
+            swal.fire({
+                titulo: "Nuevo producto",
+                html: document.querySelector(".producto-nuevo").innerHTML,
+            })
+        }
+    </script>
+
+
+    <%- include(info_pagina.subir_a_raiz + '_frags/footer') %>
+</body>
+</html>

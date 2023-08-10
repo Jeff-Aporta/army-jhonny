@@ -68,6 +68,11 @@ async function leer(_id, collection = "main") {
     return doc
 }
 
+async function eliminar(_id, collection = "main") {
+    collection = collections[collection]
+    await collection.deleteOne({ _id });
+}
+
 async function todosLosDatosAlmacenados(collection = "main") {
     collection = collections[collection]
     return await collection?.find()?.toArray() ?? [];
@@ -76,5 +81,6 @@ async function todosLosDatosAlmacenados(collection = "main") {
 module.exports = {
     escribir,
     leer,
+    eliminar,
     todosLosDatosAlmacenados
 }

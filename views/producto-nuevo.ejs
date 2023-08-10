@@ -1,100 +1,64 @@
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <%- include(info_pagina.subir_a_raiz + '_frags/links&metas') %>
     <link rel="stylesheet" href="/css/productos.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.5.1/jscolor.min.js"></script>
-  </head>
-  <body>
-    <%- include(info_pagina.subir_a_raiz + '_frags/header') %>
 
     <div class="contenedor-principal">
-      <form
-        action="/crear-producto"
-        method="post"
-        enctype="multipart/form-data"
-        class="contenedor"
-      >
+      <form action="/crear-producto" method="post" enctype="multipart/form-data" class="contenedor">
         <br />
         <h1 style="text-align: center">Producto nuevo</h1>
         <br />
-        <input
-          type="file"
-          name="input-fotos"
-          id="input-fotos"
-          multiple
-          accept="image/*"
-          style="display: none"
-        />
+        <input type="file" name="input-fotos" id="input-fotos" multiple accept="image/*" style="display: none" />
         <center>
-          <div style="width: 90%; text-align: left; margin-bottom: 5px; font-size: 150%;">
+          <div style="width: 90%; text-align: left; margin-bottom: 5px; ">
             ID
             &nbsp;
-            <input
-              name="_id"
-              id="_id"
-              type="text"
-              placeholder="ID"
-              readonly
-              style="
+            <input name="_id" id="_id" type="text" placeholder="ID" readonly style="
               background: rgba(0, 0, 0, 0.05);
                 padding: 10px;
-                font-size: 110%;
                 border-radius: 10px;
                 width: 50%;
-              "
-            />
+                border: none;
+              " />
             <script>
               document.querySelector("#_id").value = Math.random().toString().replaceAll("0.", "");
             </script>
           </div>
           <br />
           <br />
-          <div style="width: 90%; text-align: left; margin-bottom: 5px">
+          <div style="width: 90%; text-align: left; margin-bottom: 5px; ">
             Título
           </div>
-          <input
-            name="titulo"
-            id="titulo"
-            type="text"
-            placeholder="Título"
-            style="
+          <input name="titulo" id="titulo" type="text" placeholder="Título" style="
               padding: 10px;
               font-size: 200%;
               border-radius: 10px;
               width: 90%;
-            "
-          />
+              border: 1px solid lightgray;
+            " />
           <br />
           <br />
           <div style="width: 90%; text-align: left; margin-bottom: 5px">
             Descripción
           </div>
-          <textarea
-            name="desc"
-            id="desc"
-            placeholder="Descripción"
-            style="
+          <textarea name="desc" id="desc" placeholder="Descripción" style="
               width: 90%;
               height: 100px;
               padding: 10px;
               border-radius: 10px;
-            "
-          ></textarea>
+              border: 1px solid lightgray;
+            "></textarea>
           <br />
           <br />
           <div style="width: 90%; text-align: left;">
             <div style="margin-bottom: 5px">
-            Precio
+              Precio
             </div>
-            <span style="font-size: 200%">$ &nbsp;</span
-            ><input
-              name="precio"
-              id="precio"
-              type="text"
-              placeholder="Precio"
-              style="padding: 10px; font-size: 200%; border-radius: 10px; width: 90%; max-width: 300px;"
-            />
+            <span style="font-size: 200%">$ &nbsp;</span><input name="precio" id="precio" type="text" placeholder="Precio" style="
+                padding: 10px; 
+                font-size: 200%; 
+                border-radius: 10px; 
+                width: 90%; 
+                max-width: 300px;
+                border: 1px solid lightgray;
+              " />
           </div>
           <br />
           <br />
@@ -163,7 +127,7 @@
             div_temp.classList.add("miniatura");
             div.parentNode.insertBefore(div_temp, div);
 
-            
+
             div.style.position = "absolute";
             document.body.appendChild(div);
 
@@ -249,5 +213,3 @@
         }
       });
     </script>
-  </body>
-</html>
