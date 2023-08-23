@@ -19,7 +19,6 @@
   socket.on("Productos: Cargar todos", (productos) => {
     let productosCargados = document.querySelector(".productos-cargados");
     productosCargados.innerHTML = "";
-    console.log(productos);
     if (ordenamiento) {
       switch (ordenamiento) {
         case "alfabetico":

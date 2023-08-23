@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include(info_pagina.subir_a_raiz + '_frags/links&metas') %>
+    <link rel="stylesheet" href="/css/productos.css">
+</head>
+<body>
+    <%- include(info_pagina.subir_a_raiz + '_frags/header') %>
+
+    <div class="elementos-carrito">
+    </div>
+
+    <%- include(info_pagina.subir_a_raiz + '_frags/footer') %>
+
+    <script>
+        function cargar_elementos_carrito(){
+            let carrito = JSON.parse(localStorage.getItem('carrito'));
+            let elementos_carrito = document.querySelector('.elementos-carrito');
+            elementos_carrito.innerHTML = '';
+            let carta = document.createElement('div');
+            carta.classList.add('carta');
+            let imagen = document.createElement('img');
+            imagen.classList.add('imagen');
+            let contenido = document.createElement('div');
+            contenido.classList.add('contenido');
+            let titulo = document.createElement('h3');
+            titulo.classList.add('titulo');
+            let precio = document.createElement('h4');
+            precio.classList.add('precio');
+            let cantidad = document.createElement('input');
+            cantidad.classList.add('cantidad');
+            
+        }
+    </script>
+</body>
+</html>

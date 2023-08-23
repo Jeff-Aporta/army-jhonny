@@ -1,159 +1,86 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <%- include(info_pagina.subir_a_raiz + '_frags/links&metas') %>
+    <link rel="stylesheet" href="/css/productos.css" />
+    <link rel="stylesheet" href="/css/loaders/dual-ring.css" />
 
-<head>
-  <%- include(info_pagina.subir_a_raiz + '_frags/links&metas') %>
-  <link rel="stylesheet" href="/css/productos.css" />
-  <link rel="stylesheet" href="/css/loaders/dual-ring.css" />
-</head>
+    <script src="/js/producto-id/cambiar-imagen.js"></script>
+    <script src="/js/producto-id/eliminar.js"></script>
+    <script defer src="/js/producto-id/main.js"></script>
 
-<body>
-  <%- include(info_pagina.subir_a_raiz + '_frags/header') %>
+  </head>
 
-  <div style="text-align: center" class="contenedor-principal">
-    <div class="contenedor presentador-un-producto" style="display: flex;justify-content: space-evenly;">
-      <div class="presentador-imagenes">
-        <img class="img-principal">
-        <div class="Imagenes"></div>
-      </div>
-      <div class="textos">
-        <div>
-          <h1 class="Titulo">Titulo producto</h1>
-          <h2>Precio: <span class="Precio">$123.456</span></h2>
+  <body>
+    <%- include(info_pagina.subir_a_raiz + '_frags/header') %>
+
+    <div style="text-align: center" class="contenedor-principal">
+      <div
+        class="contenedor presentador-un-producto"
+        style="display: flex; justify-content: space-evenly"
+      >
+        <div class="presentador-imagenes">
+          <img class="img-principal" />
+          <div class="Imagenes"></div>
         </div>
-        <br>
-        <br>
-        <div class="Descripcion">Descripción</div>
-        <br>
-        <br>
-        <div class="btn dodgerblue">
-          Agregar al carrito <i class="fa-solid fa-cart-shopping"></i>
-        </div>
-        <% if(user){ %>
-        <hr>
+        <div class="textos">
+          <div>
+            <h1 class="Titulo">Titulo producto</h1>
+            <h2>Precio: <span class="Precio">$123.456</span></h2>
+          </div>
+          <br />
+          <br />
+          <div class="Descripcion">Descripción</div>
+          <br />
+          <br />
+          <div class="btn dodgerblue" onclick="agregarAlCarrito();">
+            Agregar al carrito <i class="fa-solid fa-cart-shopping"></i>
+          </div>
 
-        <div class="btn tomato eliminar-producto" onclick="Eliminar();">
-          Eliminar producto
-        </div>
-        <div class="btn eliminando-producto" style="display: none;">
-          <div class="lds-dual-ring"></div>
-          &nbsp;
-          Eliminando
-        </div>
-        <% } %>
+          <hr />
 
+          <div class="btn tomato eliminar-producto" onclick="Eliminar();">
+            Eliminar producto
+          </div>
+          <div class="btn eliminando-producto" style="display: none">
+            <div class="lds-dual-ring"></div>
+            &nbsp; Eliminando
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <%- include(info_pagina.subir_a_raiz + '_frags/footer') %>
+    <%- include(info_pagina.subir_a_raiz + '_frags/footer') %>
 
-  <script>
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    if (!urlParams.has("_id")) {
-      location.href = "/";
-    }
-
-    let producto;
-
-    socket.emit("Productos: Cargar uno", urlParams.get("_id"));
-
-    socket.on("Productos: Cargar uno", (producto_recibido) => {
-      producto = producto_recibido;
-
-      let contenedorPrincipal = document.querySelector(
-        ".contenedor-principal"
-      );
-
-      contenedorPrincipal.querySelector(".Titulo").innerHTML =
-        producto_recibido.titulo;
-      contenedorPrincipal.querySelector(
-        ".Precio"
-      ).innerHTML = `$${producto_recibido.precio}`;
-      let img_principal = contenedorPrincipal.querySelector(".img-principal");
-      img_principal.src = producto_recibido.imagenes[0].thumb.url;
-      img_principal.onload = () => {
-        img_principal.src = producto_recibido.imagenes[0].image.url;
-        img_principal.onload = undefined;
-      };
-      let imagenes = contenedorPrincipal.querySelector(".Imagenes");
-      let html = "";
-      producto_recibido.imagenes.forEach((imagen, index) => {
-        html += `
-                <img 
-                    src="${imagen.thumb.url}" class="thumb ${
-            index == 0 ? "thumb-activo" : ""
-          }" 
-            onmouseover="
-                cambiarImagen('${imagen.image.url}', this);
-            "
-            onclick="
-                cambiarImagen('${imagen.image.url}', this);
-            ">`;
-      });
-      imagenes.innerHTML = html;
-      contenedorPrincipal.querySelector(".Descripcion").innerHTML =
-        producto_recibido.desc;
-    });
-
-    socket.on("Productos: Eliminar", (producto_recibido) => {
-      location.href = "/";
-    });
-
-    async function Eliminar() {
-      let respuesta = await swal.fire({
-        title: "¿Estás seguro?",
-        text: "Esta acción no se puede deshacer",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Eliminar",
-        cancelButtonText: "Cancelar",
-      });
-      if (respuesta.isConfirmed) {
-        document.querySelector('.eliminar-producto').remove();
-        document.querySelector('.eliminando-producto').style.display = '';
-        socket.emit("Productos: Eliminar", producto._id);
-      }
-    }
-
-    function cambiarImagen(url, img_thumb) {
-      document.querySelector(".contenedor-principal .img-principal").src =
-        url;
-      document
-        .querySelectorAll(".contenedor-principal .Imagenes .thumb")
-        .forEach((thumb) => {
-          thumb.classList.remove("thumb-activo");
+    <script>
+      async function agregarAlCarrito() {
+        let respuesta = await swal.fire({
+          title: "Cantidad",
+          input: "number",
+          inputAttributes: {
+            min: 1,
+            step: 1,
+          },
+          inputValue: 1,
+          confirmButtonText: "Agregar",
+          showCloseButton: true,
         });
-      img_thumb.classList.add("thumb-activo");
-    }
-
-
-    async function agregarAlCarrito() {
-      let respuesta = await swal.fire({
-        title: "Cantidad",
-        input: "number",
-        inputAttributes: {
-          min: 1,
-          value: 1,
-        },
-        confirmButtonText: "Agregar",
-        showCloseButton: true,
-      })
-      if (respuesta.isConfirmed) {
-        let cantidad = respuesta.value;
-        let carrito = JSON.parse(localStorage.getItem("carrito")) ?? {};
-        if (carrito[producto._id]) {
-          cantidad += carrito[producto._id].cantidad;
+        if (respuesta.isConfirmed) {
+          let cantidad = parseInt(respuesta.value);
+          let carrito = JSON.parse(localStorage.getItem("carrito")) ?? {};
+          carrito[producto._id] = {
+            cantidad
+          };
+          localStorage.setItem("carrito", JSON.stringify(carrito));
+          console.log(carrito);
+          swal.fire({
+            title: "Producto agregado al carrito",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
-        carrito[producto._id] = {
-          cantidad,
-          _id: producto._id,
-        };
-        localStorage.setItem("carrito", JSON.stringify(carrito));
       }
-    }
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>
