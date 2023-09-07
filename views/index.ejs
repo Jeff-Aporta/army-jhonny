@@ -2,13 +2,13 @@
 <html lang="es">
 <head>
     <%- include(info_pagina.subir_a_raiz + '_frags/links&metas') %>
-    <link rel="stylesheet" href="/css/productos.css">
+    <link rel="stylesheet" href="/producto/css/productos.css">
 </head>
 <body>
     <%- include(info_pagina.subir_a_raiz + '_frags/header') %>
 
     <div style="text-align: center;" class="contenedor-principal">
-        <%- include(info_pagina.subir_a_raiz + '_frags/todos-los-productos.ejs', {
+        <%- include(info_pagina.subir_a_raiz + 'producto/todos-los-productos.ejs', {
             inicio: -1,
             fin: 6,
             ordenamiento: "aleatorio"

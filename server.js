@@ -17,6 +17,7 @@ const server = http.createServer(app);
 const io = socketio.listen(server);
 app.set("port", process.env.PORT || 3000);
 app.use(express.static("public"));
+app.use(express.static("views"));
 app.use(urlencodedParser);
 app.set("view engine", "ejs");
 

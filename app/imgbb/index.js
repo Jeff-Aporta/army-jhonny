@@ -42,6 +42,11 @@ module.exports = (pack_app) => {
         e = 1;
       }
 
+      let nuevoNombre = file.path.split(".");
+      let extension = nuevoNombre.pop();
+      nuevoNombre = nuevoNombre.join(".") + "-min." + extension;
+
+
       await image.resize(w * e, h * e).write(nuevoNombre);
 
 

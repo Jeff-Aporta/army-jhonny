@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <%- include(info_pagina.subir_a_raiz + '_frags/links&metas') %>
+    <link rel="stylesheet" href="/producto/css/productos.css" />
+    <script defer src="/js/producto-nuevo.js"></script>
+  </head>
+  <body>
+    <%- include(info_pagina.subir_a_raiz + '_frags/header') %>
+
+    <div class="contenedor-principal">
+      <form
+        action="/crear-producto"
+        method="post"
+        enctype="multipart/form-data"
+        class="contenedor"
+      >
+        <br />
+        <h1 style="text-align: center">Producto nuevo</h1>
+        <br />
+        <input
+          type="file"
+          name="input-fotos"
+          id="input-fotos"
+          multiple
+          accept="image/*"
+          style="display: none"
+        />
+        <center>
+          <div style="width: 90%; text-align: left; margin-bottom: 5px">
+            ID &nbsp;
+            <input
+              name="_id"
+              id="_id"
+              type="text"
+              placeholder="ID"
+              readonly
+              style="
+                background: rgba(0, 0, 0, 0.05);
+                padding: 10px;
+                border-radius: 10px;
+                width: 50%;
+                border: none;
+              "
+            />
+          </div>
+          <br />
+          <br />
+          <div style="width: 90%; text-align: left; margin-bottom: 5px">
+            Título
+          </div>
+          <input
+            name="titulo"
+            id="titulo"
+            type="text"
+            placeholder="Título"
+            style="
+              padding: 10px;
+              font-size: 200%;
+              border-radius: 10px;
+              width: 90%;
+              border: 1px solid lightgray;
+            "
+          />
+          <br />
+          <br />
+          <div style="width: 90%; text-align: left; margin-bottom: 5px">
+            Descripción
+          </div>
+          <textarea
+            name="desc"
+            id="desc"
+            placeholder="Descripción"
+            style="
+              width: 90%;
+              height: 100px;
+              padding: 10px;
+              border-radius: 10px;
+              border: 1px solid lightgray;
+            "
+          ></textarea>
+          <br />
+          <br />
+          <div style="width: 90%; text-align: left">
+            <div style="margin-bottom: 5px">Precio</div>
+            <span style="font-size: 200%">$ &nbsp;</span
+            ><input
+              name="precio"
+              id="precio"
+              type="text"
+              placeholder="Precio"
+              style="
+                padding: 10px;
+                font-size: 200%;
+                border-radius: 10px;
+                width: 90%;
+                max-width: 300px;
+                border: 1px solid lightgray;
+              "
+            />
+          </div>
+          <br />
+          <br />
+          <div class="contenedor" style="width: 90%">
+            <h2 style="color: gray">Fotos</h2>
+            <span class="previsualizaciones"></span>
+            <label for="input-fotos" class="label-agregar-fotos">
+              <i class="fa-solid fa-camera"></i>
+            </label>
+          </div>
+          <br />
+          <br />
+          <div
+            onclick="document.querySelector('form').submit()"
+            class="btn dodgerblue"
+          >
+            Guardar
+          </div>
+        </center>
+      </form>
+    </div>
+    <%- include(info_pagina.subir_a_raiz + '_frags/footer') %>
+  </body>
+</html>

@@ -17,6 +17,11 @@ module.exports = function (app_pack) {
             let producto = await mongo.eliminar(id, "Productos");
             io.to(socket.id).emit("Productos: Eliminar", producto);
         });
+
+        socket.on('Producto: obtener', async function (id) {
+            let producto = await mongo.leer(id, "Productos");
+            io.to(socket.id).emit("Producto: consultado", producto);
+        });
         
     });
 }

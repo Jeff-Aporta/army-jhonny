@@ -37,17 +37,7 @@ function interpretar_ruta(req, res, next) {
       };
     }
     
-    return res.render("404", {
-      ...retornar({
-        profundidad: nodos_ruta.length,
-        carpeta: nodos_ruta.join("/"),
-        nombre: ultimo_nodo_ruta,
-      }),
-      titulo: "404",
-      html: `
-        No hay información en está ruta
-      `,
-    });
+    return res.redirect("/404");
   }
 
   let { info_pagina } = argumentos_ruta;

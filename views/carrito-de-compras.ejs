@@ -1,36 +1,175 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
+  <head>
     <%- include(info_pagina.subir_a_raiz + '_frags/links&metas') %>
-    <link rel="stylesheet" href="/css/productos.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/css/productos.css" />
+  </head>
+  <body>
     <%- include(info_pagina.subir_a_raiz + '_frags/header') %>
 
-    <div class="elementos-carrito">
+    <div class="contenedor-principal">
+        <h1>
+            Productos a solicitar
+        </h1>
+    
+        <div class="elementos-carrito"></div>
     </div>
 
     <%- include(info_pagina.subir_a_raiz + '_frags/footer') %>
 
-    <script>
-        function cargar_elementos_carrito(){
-            let carrito = JSON.parse(localStorage.getItem('carrito'));
-            let elementos_carrito = document.querySelector('.elementos-carrito');
-            elementos_carrito.innerHTML = '';
-            let carta = document.createElement('div');
-            carta.classList.add('carta');
-            let imagen = document.createElement('img');
-            imagen.classList.add('imagen');
-            let contenido = document.createElement('div');
-            contenido.classList.add('contenido');
-            let titulo = document.createElement('h3');
-            titulo.classList.add('titulo');
-            let precio = document.createElement('h4');
-            precio.classList.add('precio');
-            let cantidad = document.createElement('input');
-            cantidad.classList.add('cantidad');
-            
+    <style>
+      .elementos-carrito {
+        min-height: 100vh;
+      }
+
+      .mensaje {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .elemento-carrito {
+        display: flex;
+        justify-content: initial;
+        align-items: center;
+        padding: 1rem;
+        background-color: white;
+        border-bottom: 1px solid #ccc;
+        margin: 20px 0;
+        .imagen {
+          width: 230px;
+          height: 230px;
+          object-fit: cover;
+          margin: 10px;
         }
+        .contenido {
+                width: calc(100% - 250px);
+          .titulo {
+            font-weight: bold;
+            font-size: 30px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+          }
+          .precio {
+            font-size: 30px;
+          }
+          .desc {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+          }
+        }
+      }
+    </style>
+
+    <script>
+      function cargar_elementos_carrito() {
+        let carrito = JSON.parse(localStorage.getItem("carrito"));
+        if (!carrito || Object.keys(carrito).length == 0) {
+          let elementos_carrito = document.querySelector(".elementos-carrito");
+          let mensaje = document.createElement("div");
+          mensaje.innerText = "No hay productos en el carrito";
+          elementos_carrito.classList.add("mensaje");
+          elementos_carrito.appendChild(mensaje);
+          return;
+        }
+        let elementos_carrito = document.querySelector(".elementos-carrito");
+        Object.entries(carrito).forEach(([_id, val]) => {
+          let elemento = document.createElement("div");
+          elemento.classList.add("elemento-carrito");
+          elemento.id = _id;
+
+          let imagen = document.createElement("img");
+          let contenido = document.createElement("div");
+          let titulo = document.createElement("div");
+          let precio = document.createElement("div");
+          let desc = document.createElement("div");
+          let contenedor_cantidad = document.createElement("div");
+          let _cantidad = document.createElement("input");
+          let eliminar = document.createElement("div");
+
+          _cantidad.type = "number";
+          _cantidad.value = val.cantidad;
+          _cantidad.min = 1;
+          _cantidad.max = 100;
+          _cantidad.step = 1;
+          _cantidad.addEventListener("change", () => {
+            carrito[_id] = {
+              cantidad: parseInt(_cantidad.value),
+            };
+            localStorage.setItem("carrito", JSON.stringify(carrito));
+          });
+
+          imagen.classList.add("imagen");
+          contenido.classList.add("contenido");
+          titulo.classList.add("titulo");
+          precio.classList.add("precio");
+          desc.classList.add("desc");
+          contenedor_cantidad.classList.add("contenedor-cantidad");
+          _cantidad.classList.add("cantidad");
+          eliminar.classList.add("eliminar");
+          eliminar.innerText = "Eliminar";
+
+          contenido.appendChild(titulo);
+          contenido.appendChild(document.createElement("br"));
+          contenido.appendChild(precio);
+          contenido.appendChild(document.createElement("br"));
+          contenido.appendChild(desc);
+          contenido.appendChild(document.createElement("br"));
+          contenido.appendChild(_cantidad);
+          contenedor_cantidad.appendChild(_cantidad);
+          contenido.appendChild(document.createElement("br"));
+          contenido.appendChild(contenedor_cantidad);
+          contenido.appendChild(document.createElement("br"));
+          contenido.appendChild(eliminar);
+
+          elementos_carrito.appendChild(elemento);
+
+          elemento.appendChild(imagen);
+          elemento.appendChild(contenido);
+
+          socket.emit("Producto: obtener", _id);
+        });
+      }
+
+      socket.on("Producto: consultado", (producto) => {
+        console.log(producto);
+        let elemento = document.getElementById(producto._id);
+        elemento.querySelector("img").src = producto.imagenes[0].thumb.url;
+        elemento.querySelector(".titulo").innerText = producto.titulo;
+        elemento.querySelector(".precio").innerText = parseInt(
+          producto.precio.replaceAll(".", "")
+        ).formatMoney();
+        elemento.querySelector(".desc").innerHTML = producto.desc;
+        elemento
+          .querySelector(".eliminar")
+          .addEventListener("click", async () => {
+            let carrito = JSON.parse(localStorage.getItem("carrito"));
+            let respuesta = await swal.fire({
+              title: "¿Estás seguro?",
+              text: "¿Estás seguro que deseas eliminar este producto del carrito?",
+              icon: "warning",
+              showCancelButton: true,
+              confirmButtonText: "Sí, eliminar",
+              cancelButtonText: "Cancelar",
+            });
+            if (respuesta.isConfirmed) {
+              elemento.querySelector(".eliminar").style.display = "none";
+              delete carrito[producto._id];
+              localStorage.setItem("carrito", JSON.stringify(carrito));
+              elemento.remove();
+              swal.fire({
+                title: "Producto eliminado del carrito",
+                icon: "success",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            }
+          });
+      });
+
+      cargar_elementos_carrito();
     </script>
-</body>
+  </body>
 </html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <%- include(info_pagina.subir_a_raiz + '_frags/links&metas') %>
+    <link rel="stylesheet" href="/producto/css/productos.css" />
+  </head>
+  <body>
+    <%- include(info_pagina.subir_a_raiz + '_frags/header') %>
+
+    <div style="text-align: center" class="contenedor-principal">
+      <a href="/producto/producto-nuevo">
+        <div class="btn dodgerblue" onclick="crearProducto();">
+          Crear nuevo producto <i class="fa-solid fa-circle-plus"></i>
+        </div>
+      </a>
+
+      <hr />
+      <h1 style="color: white">Productos</h1>
+      <br />
+      <%- include(info_pagina.subir_a_raiz + 'producto/todos-los-productos.ejs', {
+      inicio: -1, fin: -1, ordenamiento: "alfabetico" }) %>
+    </div>
+
+    <%- include(info_pagina.subir_a_raiz + '_frags/footer') %>
+  </body>
+</html>

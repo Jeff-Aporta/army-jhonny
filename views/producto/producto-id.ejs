@@ -2,12 +2,12 @@
 <html lang="es">
   <head>
     <%- include(info_pagina.subir_a_raiz + '_frags/links&metas') %>
-    <link rel="stylesheet" href="/css/productos.css" />
+    <link rel="stylesheet" href="/producto/css/productos.css" />
     <link rel="stylesheet" href="/css/loaders/dual-ring.css" />
 
-    <script src="/js/producto-id/cambiar-imagen.js"></script>
-    <script src="/js/producto-id/eliminar.js"></script>
-    <script defer src="/js/producto-id/main.js"></script>
+    <script src="/producto/producto-id-js/cambiar-imagen.js"></script>
+    <script src="/producto/producto-id-js/eliminar.js"></script>
+    <script defer src="/producto/producto-id-js/main.js"></script>
 
   </head>
 
@@ -72,7 +72,6 @@
             cantidad
           };
           localStorage.setItem("carrito", JSON.stringify(carrito));
-          console.log(carrito);
           swal.fire({
             title: "Producto agregado al carrito",
             icon: "success",
