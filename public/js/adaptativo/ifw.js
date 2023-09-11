@@ -9,6 +9,17 @@ function ifw(propiedad, valor, operador, tamaño) {
   for (const r in replaces) {
     clase = clase.replaceAll(replaces[r], r);
   }
+  switch (operador) {
+    case "less":
+      less_than(propiedad, valor, tamaño, clase);
+      break;
+    case "up":
+      up_than(propiedad, valor, tamaño, clase);
+      break;
+    case "between":
+      between(propiedad, valor, tamaño[0], tamaño[1], clase);
+      break;
+  }
   return clase.replaceAll(" ", "_");
 }
 
