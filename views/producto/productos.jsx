@@ -12,8 +12,8 @@ ReactDOM.createRoot(document.querySelector(".App")).render(
     <div className="contenedor-principal">
       
       <a href="/producto/producto-nuevo">
-        <Button variant="primary" >
-          Crear nuevo producto <i className="fa-solid fa-circle-plus"></i>
+        <Button variant="contained" endIcon={<i className="fa-solid fa-circle-plus"></i>}>
+          Crear nuevo producto 
         </Button>
       </a>
 
