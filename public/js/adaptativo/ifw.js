@@ -3,13 +3,13 @@ let up_than_medias = {};
 let between_medias = {};
 
 function ifw(propiedad, valor, operador, tamaño) {
-  let retorno = `${propiedad}_${valor}-${operador}-${tamaño}${
+  let clase = `${propiedad}_${valor}-${operador}-${tamaño}${
     tamaño.toString().endsWith("px") ? "" : "px"
   }`;
   for (const r in replaces) {
-    retorno = retorno.replaceAll(replaces[r], r);
+    clase = clase.replaceAll(replaces[r], r);
   }
-  return retorno.replaceAll(" ", "_");
+  return clase.replaceAll(" ", "_");
 }
 
 function less_than(propiedad, valores, tamaño, clase) {

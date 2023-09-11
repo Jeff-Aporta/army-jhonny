@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <%- include('_frags/links&metas') %>
-    <script defer type="text/babel" src="/404.jsx"></script>
-    <link rel="stylesheet" href="/404.css">
+    <%- include('EJS/links&metas') %>
   </head>
   <body>
-    <%- include(info_pagina.subir_a_raiz + '_frags/header') %>
-
     <div class="App"></div>
 
-    <%- include(info_pagina.subir_a_raiz + '_frags/footer') %>
+    <script type="text/babel">
+      addLink("/404.css");
+
+      function SeccionFlexCentrada({ children }) {
+        return <div className="SeccionFlexCentrada alto100vh">{children}</div>;
+      }
+
+      ReactDOM.createRoot(document.querySelector(".App")).render(
+        <React.Fragment>
+          <Header />
+          <SeccionFlexCentrada>404 Error :(</SeccionFlexCentrada>
+          <Footer />
+        </React.Fragment>
+      );
+    </script>
   </body>
 </html>

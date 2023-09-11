@@ -1,5 +1,3 @@
-addScript("/producto/todos-los-productos.js");
-
 socket.emit("Productos: Cargar todos");
 
 socket.on("Productos: Cargar todos", (productos) => {

@@ -7,9 +7,11 @@ const darkTheme = createTheme({
 let a = ReactDOM.createRoot;
 ReactDOM.createRoot = function (element) {
   let root = a.call(this, element);
-  setTimeout(() => {
-    updateResponsive();
-  }, 0);
+  [0, 100].forEach((time) => {
+    setTimeout(() => {
+      updateResponsive();
+    }, time);
+  });
   return root;
 }
 
