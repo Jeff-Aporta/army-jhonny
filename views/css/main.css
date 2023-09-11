@@ -10,7 +10,7 @@ a{
 
 body{
     background-image: url(/svg/army.svg);
-    background-color: darkkhaki;
+    background-color: black;
     background-size: cover;
     font-family: Roboto;
 }
@@ -73,8 +73,16 @@ textarea{
 
 .contenedor{
     border: 1px solid lightgray;
-    background-color: white;
+    background-color: rgb(30, 38, 48);
     padding: 10px;
     border-radius: 5px;
     box-shadow: -10px 10px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* .MuiPaper-root{
+    background-color: transparent !important;
+} */
+
+.MuiButton-label{
+    padding: 0 !important;
 }

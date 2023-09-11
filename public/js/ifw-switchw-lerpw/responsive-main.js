@@ -1,4 +1,4 @@
-replaces = {
+const replaces = {
     A: "*", //asterisc
     S: "/", //slash
     P: "%", //porcent
@@ -10,7 +10,7 @@ replaces = {
     H: "#", //hash
 };
 
-post_replaces = {
+const post_replaces = {
     G: "--", //guión (doble)
 }
 
@@ -25,4 +25,6 @@ function updateResponsive() {
     head.appendChild(style_responsive)
 }
 
-updateResponsive()
+setTimeout(() => {
+    updateResponsive();
+}, 100);

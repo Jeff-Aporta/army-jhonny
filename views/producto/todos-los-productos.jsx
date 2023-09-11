@@ -1,14 +1,6 @@
-
-ReactDOM.createRoot(document.querySelector(".App")).render(
-  <Seccion />
-);
-
 socket.emit("Productos: Cargar todos");
 
 socket.on("Productos: Cargar todos", (productos) => {
-  let productosCargados = <div className="productos-cargados"></div>;
-  productosCargados.innerHTML = "";
-
   if (ordenamiento) {
     switch (ordenamiento) {
       case "alfabetico":
@@ -29,32 +21,57 @@ socket.on("Productos: Cargar todos", (productos) => {
         break;
     }
   }
-  productos.forEach((producto, index) => {
-    if (inicio > 0) {
-      if (index < inicio) {
-        return;
+
+
+  let productosCargados = <div className="productos-cargados">
+    {productos.map((producto, index) => {
+      if (inicio > 0) {
+        if (index < inicio) {
+          return;
+        }
       }
-    }
-    if (fin > 0) {
-      if (index > fin) {
-        return;
+      if (fin > 0) {
+        if (index > fin) {
+          return;
+        }
       }
-    }
-    let plantillaProducto = (
-      <div className="plantilla-producto">
-        <a href={`/producto/producto-id?_id=${producto._id}`}>
+      return <Producto />;
+
+      function Producto() {
+        return <div className="plantilla-producto">
+          <ImgLink />
+          <Info />
+        </div>;
+      }
+
+      function ImgLink() {
+        return <a href={`/producto/producto-id?_id=${producto._id}`}>
           <img src={producto.imagenes[0].thumb.url} />
-        </a>
-        <div className="info">
-          <div className="precio">
-            {`$${producto.precio}`}
-          </div>
-          <div className="titulo">
-            {producto.titulo}
-          </div>
-        </div>
-      </div>
-    );
-    productosCargados.appendChild(productoCargado);
-  });
+        </a>;
+      }
+
+      function Info() {
+        return <div className="info">
+          <Precio />
+          <Titulo />
+        </div>;
+      }
+
+      function Titulo() {
+        return <div className="titulo">
+          {producto.titulo}
+        </div>;
+      }
+T
+      function Precio() {
+        return <div className="precio">
+          {producto.precio}
+        </div>;
+      }
+    })}
+  </div>;
+
+  ReactDOM.createRoot(document.querySelector(".r-todos-los-productos")).render(
+    productosCargados
+  );
 });

@@ -1,0 +1,44 @@
+.c-red {
+  color: red;
+}
+
+.c-tomato {
+  color: tomato;
+}
+
+.c-limegreen {
+  color: limegreen;
+}
+
+.c-white{
+  color: white;
+}
+
+.fs-50px {
+  font-size: 50px;
+}
+
+.fs-11px {
+  font-size: 11px;
+}
+
+.c-pointer {
+  cursor: pointer;
+}
+
+.d-none {
+  display: none;
+}
+
+.fs-150P {
+  font-size: 150%;
+}
+
+.ta-right {
+  text-align: right;
+}
+
+.flexVertical{
+  display: flex;
+  flex-direction: column;
+}
