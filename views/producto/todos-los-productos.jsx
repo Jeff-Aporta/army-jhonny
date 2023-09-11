@@ -1,3 +1,5 @@
+console.log("Ejecutando todos-los-productos.jsx...");
+
 socket.emit("Productos: Cargar todos");
 
 socket.on("Productos: Cargar todos", (productos) => {

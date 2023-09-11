@@ -20,7 +20,8 @@ function addScript(src, type = "text/javascript", defer = true) {
   script.setAttribute('src', src);
   script.setAttribute('type', type);
   script.setAttribute('defer', defer);
-  document.body.appendChild(script);
+  document.head.appendChild(script);
+  console.log(script)
 }
 
 function addLink(href, rel = "stylesheet") {
