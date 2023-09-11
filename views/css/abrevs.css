@@ -38,6 +38,10 @@
   text-align: right;
 }
 
+.ta-center {
+  text-align: center;
+}
+
 .flexVertical{
   display: flex;
   flex-direction: column;

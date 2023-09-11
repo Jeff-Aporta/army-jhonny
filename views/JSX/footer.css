@@ -1,0 +1,13 @@
+.footer {
+  background: darkolivegreen;
+  color: white;
+  height: 100px;
+  padding: 10px;
+  position: relative;
+}
+
+.pie-de-footer {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}

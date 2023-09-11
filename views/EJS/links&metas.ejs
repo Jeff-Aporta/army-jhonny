@@ -22,9 +22,11 @@
 <script src="https://unpkg.com/@mui/material@latest/umd/material-ui.production.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap"/>
+<link
+  href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap"
+/>
 
-<script type="text/babel" src="/main.jsx"></script>
+<script type="text/babel" src="JSX/main.jsx"></script>
 
 <title>ARMY</title>
 
@@ -48,19 +50,18 @@
 
 <!-- Iniciar sesión en cualquier página -->
 <script src="/js/iniciar-sesion.js"></script>
-
 <script src="/js/prototypes.js"></script>
 
 <!-- Responsive -->
-<script
-  defer
-  type="text/babel"
-  src="/js/ifw-switchw-lerpw/responsive-main.js"
-></script>
-<script src="/js/ifw-switchw-lerpw/responsive-ifw.js"></script>
-<script src="/js/ifw-switchw-lerpw/responsive-lerpw.js"></script>
-<script src="/js/ifw-switchw-lerpw/responsive-switchw.js"></script>
+<script src="/js/adaptativo/ifw.js"></script>
+<script src="/js/adaptativo/lerpw.js"></script>
+<script src="/js/adaptativo/switchw.js"></script>
+<script defer src="/js/adaptativo/main.js"></script>
+
 <script src="/js/main.js"></script>
+
+<script type="text/babel" src="/JSX/header.jsx"></script>
+<script type="text/babel" src="/JSX/footer.jsx"></script>
 
 <script>
   let socket = io();

@@ -49,12 +49,15 @@
 }
 
 .plantilla-producto {
-  background: rgb(30, 38, 48);
   display: inline-block;
   text-align: left;
   padding: 10px;
   border-radius: 10px;
   margin: 5px;
+
+  &:has(img:hover){
+    filter: brightness(1.2);
+  }
 
   & img {
     width: 200px;

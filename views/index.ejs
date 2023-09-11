@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <%- include(info_pagina.subir_a_raiz + '_frags/links&metas') %>
+    <%- include(info_pagina.subir_a_raiz + 'EJS/links&metas') %>
     <link rel="stylesheet" href="/producto/css/productos.css">
+
+    <script type="text/babel" src="/index.jsx" defer></script>
+    <script type="text/babel" src="/producto/todos-los-productos.jsx" defer></script>
 </head>
 <body>
-    <%- include(info_pagina.subir_a_raiz + '_frags/header') %>
-
-    <div style="text-align: center;" class="contenedor-principal">
-        <%- include(info_pagina.subir_a_raiz + 'producto/todos-los-productos.ejs', {
-            inicio: -1,
-            fin: 6,
-            ordenamiento: "aleatorio"
-        }) %>
+    <div class="App">
     </div>
 
-    <%- include(info_pagina.subir_a_raiz + '_frags/footer') %>
 </body>
 </html>

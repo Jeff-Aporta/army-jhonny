@@ -1,6 +1,15 @@
+addScript("/producto/todos-los-productos.js");
+
 socket.emit("Productos: Cargar todos");
 
 socket.on("Productos: Cargar todos", (productos) => {
+
+  let {
+    inicio,
+    fin,
+    ordenamiento
+  } = todosLosProductosConfig;
+
   if (ordenamiento) {
     switch (ordenamiento) {
       case "alfabetico":
@@ -38,7 +47,7 @@ socket.on("Productos: Cargar todos", (productos) => {
       return <Producto />;
 
       function Producto() {
-        return <div className="plantilla-producto">
+        return <div className="plantilla-producto" style={{ backgroundColor: darkTheme.palette.grey[900] }}>
           <ImgLink />
           <Info />
         </div>;

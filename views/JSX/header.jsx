@@ -1,3 +1,15 @@
+addLink("/JSX/header.css");
+
+window.addEventListener("resize", () => {
+    document.querySelector(".menu-bars").checked = false;
+});
+
+window.addEventListener("keydown", (e) => {
+    if (e.key == "Escape") {
+        document.querySelector(".menu-bars").checked = false;
+    }
+});
+
 function Header() {
 
     let bordeBoton = {
@@ -200,7 +212,3 @@ function Header() {
         )
     }
 }
-
-ReactDOM.createRoot(document.querySelector(".r-header")).render(<Header />);
-
-updateResponsive();
