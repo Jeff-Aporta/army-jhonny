@@ -69,6 +69,8 @@ textarea{
 .contenedor-principal{
     padding: 30px 10px;
     min-height: 100vh;
+    width: max(90vw, 350px);
+    margin: auto;
 }
 
 .contenedor{

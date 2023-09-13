@@ -1,5 +1,3 @@
-console.log("Ejecutando todos-los-productos.jsx...");
-
 socket.emit("Productos: Cargar todos");
 
 socket.on("Productos: Cargar todos", (productos) => {
@@ -32,53 +30,56 @@ socket.on("Productos: Cargar todos", (productos) => {
   }
 
 
-  let productosCargados = <div className="productos-cargados">
-    {productos.map((producto, index) => {
-      if (inicio > 0) {
-        if (index < inicio) {
-          return;
+  let productosCargados = <ThemeProvider theme={darkTheme}>
+    <CssBaseline />
+    <div className="productos-cargados">
+      {productos.map((producto, index) => {
+        if (inicio > 0) {
+          if (index < inicio) {
+            return;
+          }
         }
-      }
-      if (fin > 0) {
-        if (index > fin) {
-          return;
+        if (fin > 0) {
+          if (index > fin) {
+            return;
+          }
         }
-      }
-      return <Producto />;
+        return <Producto />;
 
-      function Producto() {
-        return <div className="plantilla-producto" style={{ backgroundColor: darkTheme.palette.grey[900] }}>
-          <ImgLink />
-          <Info />
-        </div>;
-      }
+        function Producto() {
+          return <Paper className="plantilla-producto">
+            <ImgLink />
+            <Info />
+          </Paper>;
+        }
 
-      function ImgLink() {
-        return <a href={`/producto/producto-id?_id=${producto._id}`}>
-          <img src={producto.imagenes[0].thumb.url} />
-        </a>;
-      }
+        function ImgLink() {
+          return <a href={`/producto/producto-id?_id=${producto._id}`}>
+            <img src={producto.imagenes[0].thumb.url} />
+          </a>;
+        }
 
-      function Info() {
-        return <div className="info">
-          <Precio />
-          <Titulo />
-        </div>;
-      }
+        function Info() {
+          return <div className="info">
+            <Precio />
+            <Titulo />
+          </div>;
+        }
 
-      function Titulo() {
-        return <div className="titulo">
-          {producto.titulo}
-        </div>;
-      }
-T
-      function Precio() {
-        return <div className="precio">
-          {producto.precio}
-        </div>;
-      }
-    })}
-  </div>;
+        function Titulo() {
+          return <div className="titulo">
+            {producto.titulo}
+          </div>;
+        }
+        T
+        function Precio() {
+          return <div className="precio">
+            {producto.precio}
+          </div>;
+        }
+      })}
+    </div>
+  </ThemeProvider>
 
   ReactDOM.createRoot(document.querySelector(".r-todos-los-productos")).render(
     productosCargados

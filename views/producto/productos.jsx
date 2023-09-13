@@ -7,15 +7,19 @@ let todosLosProductosConfig = {
 }
 
 ReactDOM.createRoot(document.querySelector(".App")).render(
-  <React.Fragment>
+  <ThemeProvider theme={darkTheme}>
+    <CssBaseline />
     <Header />
     <div className="contenedor-principal">
-      
+
+    <ThemeProvider theme={lightTheme}>
+    <CssBaseline />
       <a href="/producto/producto-nuevo">
         <Button variant="contained" endIcon={<i className="fa-solid fa-circle-plus"></i>}>
-          Crear nuevo producto 
+          Crear nuevo producto
         </Button>
       </a>
+    </ThemeProvider>
 
       <hr />
 
@@ -28,5 +32,5 @@ ReactDOM.createRoot(document.querySelector(".App")).render(
 
     </div>
     <Footer />
-  </React.Fragment>
+  </ThemeProvider>
 );

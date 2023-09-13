@@ -202,6 +202,7 @@ function Header() {
             <Button className={`
                     ${ifw("border-right", "1px solid gray", "up", DISRRUPCION_RESPONSIVE)}
                     ${ifw("border", "none", "less", DISRRUPCION_RESPONSIVE)}
+                    ${ifw("min-width", "250px", "less", DISRRUPCION_RESPONSIVE)}
                     boton-header
                 `}
                 href="/producto/productos" style={bordeBoton}>

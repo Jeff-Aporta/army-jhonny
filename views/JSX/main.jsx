@@ -4,6 +4,12 @@ const darkTheme = createTheme({
   },
 });
 
+const lightTheme = createTheme({
+  palette: {
+    mode: 'light',
+  },
+});
+
 let a = ReactDOM.createRoot;
 ReactDOM.createRoot = function (element) {
   let root = a.call(this, element);
