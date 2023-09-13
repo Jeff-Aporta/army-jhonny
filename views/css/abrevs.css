@@ -46,3 +46,8 @@
   display: flex;
   flex-direction: column;
 }
+
+.flexSpaceEvenly{
+  display: flex;
+  justify-content: space-evenly;
+}

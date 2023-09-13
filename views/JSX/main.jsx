@@ -21,11 +21,12 @@ ReactDOM.createRoot = function (element) {
   return root;
 }
 
-function addScript(src, type = "text/javascript", defer = true) {
+function addScript({src, type = "text/javascript", defer = true, onload}) {
   var script = document.createElement('script');
   script.setAttribute('src', src);
   script.setAttribute('type', type);
   script.setAttribute('defer', defer);
+  script.onload = onload;
   document.head.appendChild(script);
   console.log(script)
 }

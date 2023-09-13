@@ -1,85 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <%- include(info_pagina.subir_a_raiz + '_frags/links&metas') %>
-    <link rel="stylesheet" href="/producto/css/productos.css" />
-    <link rel="stylesheet" href="/css/loaders/dual-ring.css" />
-
-    <script src="/producto/producto-id-js/cambiar-imagen.js"></script>
-    <script src="/producto/producto-id-js/eliminar.js"></script>
-    <script defer src="/producto/producto-id-js/main.js"></script>
-
+    <%- include(info_pagina.subir_a_raiz + 'EJS/links&metas') %>
+    <script type="text/babel" src="/producto/producto-id.jsx" defer></script>
   </head>
 
   <body>
-    <%- include(info_pagina.subir_a_raiz + '_frags/header') %>
-
-    <div style="text-align: center" class="contenedor-principal">
-      <div
-        class="contenedor presentador-un-producto"
-        style="display: flex; justify-content: space-evenly"
-      >
-        <div class="presentador-imagenes">
-          <img class="img-principal" />
-          <div class="Imagenes"></div>
-        </div>
-        <div class="textos">
-          <div>
-            <h1 class="Titulo">Titulo producto</h1>
-            <h2>Precio: <span class="Precio">$123.456</span></h2>
-          </div>
-          <br />
-          <br />
-          <div class="Descripcion">Descripción</div>
-          <br />
-          <br />
-          <div class="btn dodgerblue" onclick="agregarAlCarrito();">
-            Agregar al carrito <i class="fa-solid fa-cart-shopping"></i>
-          </div>
-
-          <hr />
-
-          <div class="btn tomato eliminar-producto" onclick="Eliminar();">
-            Eliminar producto
-          </div>
-          <div class="btn eliminando-producto" style="display: none">
-            <div class="lds-dual-ring"></div>
-            &nbsp; Eliminando
-          </div>
-        </div>
-      </div>
+    <div class="App">
     </div>
-
-    <%- include(info_pagina.subir_a_raiz + '_frags/footer') %>
-
-    <script>
-      async function agregarAlCarrito() {
-        let respuesta = await swal.fire({
-          title: "Cantidad",
-          input: "number",
-          inputAttributes: {
-            min: 1,
-            step: 1,
-          },
-          inputValue: 1,
-          confirmButtonText: "Agregar",
-          showCloseButton: true,
-        });
-        if (respuesta.isConfirmed) {
-          let cantidad = parseInt(respuesta.value);
-          let carrito = JSON.parse(localStorage.getItem("carrito")) ?? {};
-          carrito[producto._id] = {
-            cantidad
-          };
-          localStorage.setItem("carrito", JSON.stringify(carrito));
-          swal.fire({
-            title: "Producto agregado al carrito",
-            icon: "success",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-      }
-    </script>
   </body>
 </html>
