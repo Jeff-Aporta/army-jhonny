@@ -13,7 +13,6 @@ ReactDOM.createRoot(document.querySelector(".App")).render(
     <div className="contenedor-principal">
 
     <ThemeProvider theme={lightTheme}>
-    <CssBaseline />
       <a href="/producto/producto-nuevo">
         <Button variant="contained" endIcon={<i className="fa-solid fa-circle-plus"></i>}>
           Crear nuevo producto
