@@ -59,6 +59,8 @@ function renderizarApp() {
                         <Footer />
                 </ThemeProvider>
         );
+
+        socket.emit("Productos: Cargar uno", urlParams.get("_id"));
 }
 
 socket.on("Productos: Cargar uno", (producto_recibido) => {
@@ -95,5 +97,3 @@ socket.on("Productos: Cargar uno", (producto_recibido) => {
         contenedorPrincipal.querySelector(".Descripcion").innerHTML =
                 producto_recibido.desc;
 });
-
-socket.emit("Productos: Cargar uno", urlParams.get("_id"));

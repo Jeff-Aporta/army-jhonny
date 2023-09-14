@@ -28,7 +28,6 @@ function addScript({src, type = "text/javascript", defer = true, onload}) {
   script.setAttribute('defer', defer);
   script.onload = onload;
   document.head.appendChild(script);
-  console.log(script)
 }
 
 function addLink(href, rel = "stylesheet") {
