@@ -1,11 +1,14 @@
 addScript({ src: "/producto/producto-id-js/cambiar-imagen.js" });
 addScript({ src: "/producto/producto-id-js/eliminar.js" })
-addScript({ src: "/producto/producto-id-js/carrito.js", onload: () => { 
-        addScript({ src: "/producto/producto-id-js/eliminar.js", onload: renderizarApp });
-} })
+addScript({
+        src: "/producto/producto-id-js/carrito.js", onload: () => {
+                addScript({ src: "/producto/producto-id-js/eliminar.js", onload: renderizarApp });
+        }
+})
 
 addLink("/producto/css/productos.css")
 addLink("/css/loaders/dual-ring.css")
+addLink("/producto/producto-id.css")
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
@@ -68,18 +71,21 @@ socket.on("Productos: Cargar uno", (producto_recibido) => {
 
         let contenedorPrincipal = document.querySelector(".presentador-un-producto");
 
-        contenedorPrincipal.querySelector(".Titulo").innerHTML =
+        const titulo = contenedorPrincipal.querySelector(".Titulo");
+        const precio = contenedorPrincipal.querySelector(".Precio")
+        const img_principal = contenedorPrincipal.querySelector(".img-principal");
+        let imagenes = contenedorPrincipal.querySelector(".Imagenes");
+
+
+        titulo.innerHTML =
                 producto_recibido.titulo;
-        contenedorPrincipal.querySelector(
-                ".Precio"
-        ).innerHTML = `$${producto_recibido.precio}`;
-        let img_principal = contenedorPrincipal.querySelector(".img-principal");
+        precio.innerHTML = `$${producto_recibido.precio}`;
         img_principal.src = producto_recibido.imagenes[0].thumb.url;
         img_principal.onload = () => {
                 img_principal.src = producto_recibido.imagenes[0].image.url;
                 img_principal.onload = undefined;
         };
-        let imagenes = contenedorPrincipal.querySelector(".Imagenes");
+        
         let html = "";
         producto_recibido.imagenes.forEach((imagen, index) => {
                 html += `
