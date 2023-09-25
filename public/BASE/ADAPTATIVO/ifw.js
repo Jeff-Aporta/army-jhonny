@@ -2,53 +2,51 @@ let less_than_medias = {};
 let up_than_medias = {};
 let between_medias = {};
 
-function ifw(propiedad, valor, operador, tamaño) {
-  let clase = `${propiedad}_${valor}-${operador}-${tamaño}${
-    tamaño.toString().endsWith("px") ? "" : "px"
-  }`;
+function ifw(propiedad, valor, operador, sz) {
+  let clase = `${propiedad}_${valor}-${operador}-${sz}${sz.toString().endsWith("px") ? "" : "px"}`;
   for (const r in replaces) {
     clase = clase.replaceAll(replaces[r], r);
   }
   switch (operador) {
     case "less":
-      less_than(propiedad, valor, tamaño, clase);
+      less_than(propiedad, valor, sz, clase);
       break;
     case "up":
-      up_than(propiedad, valor, tamaño, clase);
+      up_than(propiedad, valor, sz, clase);
       break;
     case "between":
-      between(propiedad, valor, tamaño[0], tamaño[1], clase);
+      between(propiedad, valor, sz[0], sz[1], clase);
       break;
   }
   return clase.replaceAll(" ", "_");
 }
 
-function less_than(propiedad, valores, tamaño, clase) {
-  if (!less_than_medias[tamaño]) {
-    less_than_medias[tamaño] = {};
+function less_than(propiedad, valores, sz, clase) {
+  if (!less_than_medias[sz]) {
+    less_than_medias[sz] = {};
   }
-  if (!less_than_medias[tamaño][clase]) {
-    less_than_medias[tamaño][clase] = new Set();
+  if (!less_than_medias[sz][clase]) {
+    less_than_medias[sz][clase] = new Set();
   }
   for (const r in post_replaces) {
     valores = valores.replaceAll(r, post_replaces[r]);
   }
-  less_than_medias[tamaño][clase].add(
+  less_than_medias[sz][clase].add(
     propiedad + ": " + valores + " !important;"
   );
 }
 
-function up_than(propiedad, valores, tamaño, clase) {
-  if (!up_than_medias[tamaño]) {
-    up_than_medias[tamaño] = {};
+function up_than(propiedad, valores, sz, clase) {
+  if (!up_than_medias[sz]) {
+    up_than_medias[sz] = {};
   }
-  if (!up_than_medias[tamaño][clase]) {
-    up_than_medias[tamaño][clase] = new Set();
+  if (!up_than_medias[sz][clase]) {
+    up_than_medias[sz][clase] = new Set();
   }
   for (const r in post_replaces) {
     valores = valores.replaceAll(r, post_replaces[r]);
   }
-  up_than_medias[tamaño][clase].add(
+  up_than_medias[sz][clase].add(
     propiedad + ": " + valores + " !important;"
   );
 }
@@ -82,10 +80,10 @@ function extractInfoOfClase_ifw(clase) {
   let type = /.+_.+-less-\d+px/g.test(clase)
     ? "less"
     : /.+_.+-up-\d+px/g.test(clase)
-    ? "up"
-    : /.+_.+-between-\d+px-\d+px/g.test(clase)
-    ? "between"
-    : "unknown";
+      ? "up"
+      : /.+_.+-between-\d+px-\d+px/g.test(clase)
+        ? "between"
+        : "unknown";
   if (type == "unknown") {
     return;
   }

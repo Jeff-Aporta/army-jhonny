@@ -14,6 +14,10 @@
   color: white;
 }
 
+.bg-white{
+  background-color: white;
+}
+
 .fs-50px {
   font-size: 50px;
 }
@@ -42,6 +46,10 @@
   text-align: center;
 }
 
+.ta-left {
+  text-align: left;
+}
+
 .flexVertical{
   display: flex;
   flex-direction: column;
@@ -51,3 +59,12 @@
   display: flex;
   justify-content: space-evenly;
 }
+
+.mb-5px{
+  margin-bottom: 5px;
+}
+
+.w-90P {
+  width: 90%;
+}
+

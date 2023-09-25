@@ -68,13 +68,13 @@ socket.on("Productos: Cargar todos", (productos) => {
 
         function Titulo() {
           return <div className="titulo">
-            {producto.titulo}
+            {producto.titulo??"&nbsp;"}
           </div>;
         }
         T
         function Precio() {
           return <div className="precio">
-            {producto.precio}
+            {producto.precio??"&nbsp;"}
           </div>;
         }
       })}

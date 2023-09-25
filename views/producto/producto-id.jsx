@@ -89,15 +89,15 @@ socket.on("Productos: Cargar uno", (producto_recibido) => {
         let html = "";
         producto_recibido.imagenes.forEach((imagen, index) => {
                 html += `
-    <img 
-        src="${imagen.thumb.url}" class="thumb ${index == 0 ? "thumb-activo" : ""
-                        }" 
-    onmouseover="
-        cambiarImagen('${imagen.image.url}', this);
-    "
-    onclick="
-        cambiarImagen('${imagen.image.url}', this);
-    ">`;
+                <img 
+                        src="${imagen.thumb.url}" class="thumb ${index == 0 ? "thumb-activo" : ""
+                                        }" 
+                onmouseover="
+                        cambiarImagen('${imagen.image.url}', this);
+                "
+                onclick="
+                        cambiarImagen('${imagen.image.url}', this);
+                ">`;
         });
         imagenes.innerHTML = html;
         contenedorPrincipal.querySelector(".Descripcion").innerHTML =

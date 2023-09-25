@@ -13,34 +13,23 @@ const lightTheme = createTheme({
 let a = ReactDOM.createRoot;
 ReactDOM.createRoot = function (element) {
   let root = a.call(this, element);
-  [0, 100].forEach((time) => {
-    setTimeout(() => {
+  function esperar() {
+    try {
       updateResponsive();
-    }, time);
-  });
+    } catch (error) {
+      setTimeout(() => {
+        esperar();
+      }, 100);
+    }
+  }
+  esperar();
   return root;
-}
-
-function addScript({src, type = "text/javascript", defer = true, onload}) {
-  var script = document.createElement('script');
-  script.setAttribute('src', src);
-  script.setAttribute('type', type);
-  script.setAttribute('defer', defer);
-  script.onload = onload;
-  document.head.appendChild(script);
-}
-
-function addLink(href, rel = "stylesheet") {
-  var link = document.createElement('link');
-  link.setAttribute('href', href);
-  link.setAttribute('rel', rel);
-  document.head.appendChild(link);
 }
 
 function ContenedorPrincipal({ children }) {
   return (
-      <div className="contenedor-principal">
-          {children}
-      </div>
+    <div className="contenedor-principal">
+      {children}
+    </div>
   );
 }

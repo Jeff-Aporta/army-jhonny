@@ -24,7 +24,3 @@ function updateResponsive() {
     let head = document.head || document.getElementsByTagName('head')[0]
     head.appendChild(style_responsive)
 }
-
-setTimeout(() => {
-    updateResponsive();
-}, 100);

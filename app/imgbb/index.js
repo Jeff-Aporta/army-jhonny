@@ -32,26 +32,8 @@ module.exports = (pack_app) => {
     let imagenes = [];
     for (let i = 0; i < req.files.length; i++) {
       let file = req.files[i];
-      const image = await Jimp.read(file.path);
-      let w = image.bitmap.width;
-      let h = image.bitmap.height;
-      let ew = 1300 / w;
-      let eh = 1300 / h;
-      let e = ew < eh ? ew : eh;
-      if (e > 1) {
-        e = 1;
-      }
-
-      let nuevoNombre = file.path.split(".");
-      let extension = nuevoNombre.pop();
-      nuevoNombre = nuevoNombre.join(".") + "-min." + extension;
-
-
-      await image.resize(w * e, h * e).write(nuevoNombre);
-
-
        let imgbb = await upload_imgbb({
-        imagePath: nuevoNombre,
+        imagePath: file.path,
       }); 
       imagenes.push(imgbb);
       setTimeout(() => {
@@ -65,7 +47,6 @@ module.exports = (pack_app) => {
     }
     req.body.imagenes = imagenes;
     mongo.escribir(req.body, "Productos");
-
     res.redirect("/");
   });
 };
